@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Игра с ракетой</title>
+  <style>
+    #rocket {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      top: 0;
+      left: 0;
+    }
+
+    .obstacle {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Игра с ракетой</h1>
+  <p>Используйте клавиши со стрелками для управления ракетой. Избегайте препятствий!</p>
+  <div id="rocket"></div>
+
+  <script>
+    var rocket = document.getElementById('rocket');
+    var rocketPosition = { x: 0, y: 0 };
+    var obstacleInterval;
+    var obstacles = [];
+    var gameSpeed = 5;
+
+    function startGame() {
+      window.addEventListener('keydown', moveRocket);
+      obstacleInterval = setInterval(createObstacle, 2000);
+      moveRocket();
+    }
+
+    function moveRocket(event) {
+      var key = event ? event.key : '';
+
+      switch (key) {
+        case 'ArrowUp':
+          rocketPosition.y -= 10;
+          break;
+        case 'ArrowDown':
+          rocketPosition.y += 10;
+          break;
+        case 'ArrowLeft':
+          rocketPosition.x -= 10;
+          break;
+        case 'ArrowRight':
+          rocketPosition.x += 10;
+          break;
+      }
+
+      rocket.style.top = rocketPosition.y + 'px';
+      rocket.style.left = rocketPosition.x + 'px';
+
+      checkCollision();
+    }
+
+    function createObstacle() {
+      var obstacle = document.createElement('div');
+      obstacle.className = 'obstacle';
+      obstacle.style.top = Math.floor(Math.random() * 400) + 'px';
+      obstacle.style.left = '800px';
+      document.body.appendChild(obstacle);
+      obstacles.push(obstacle);
+    }
+
+    function moveObstacles() {
+      obstacles.forEach(function(obstacle) {
+        var obstacleLeft = parseInt(obstacle.style.left);
+        if (obstacleLeft > 0) {
+          obstacle.style.left = obstacleLeft - gameSpeed + 'px';
+        } else {
+          obstacle.parentNode.removeChild(obstacle);
+          obstacles.splice(obstacles.indexOf(obstacle), 1);
+        }
+      });
+    }
+
+    function checkCollision() {
+      obstacles.forEach(function(obstacle) {
+        var rocketRect = rocket.getBoundingClientRect();
+        var obstacleRect = obstacle.getBoundingClientRect();
+
+        if (
+          rocketRect.top < obstacleRect.bottom &&
+          rocketRect.bottom > obstacleRect.top &&
+          rocketRect.left < obstacleRect.right &&
+          rocketRect.right > obstacleRect.left
+        ) {
+          endGame();
+        }
+      });
+    }
+
+    function endGame() {
+      clearInterval(obstacleInterval);
+      window.removeEventListener('keydown', moveRocket);
+      alert('Игра окончена! Вы столкнулись с препятствием.');
+    }
+
+    startGame();
+    setInterval(moveObstacles, 30);
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Пример jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .message_body {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .details {
+      display: none;
+      margin-left: 20px;
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      // Скрыть все детали сообщений по клику на сообщение
+      $('.message').click(function() {
+        $(this).find('.details').slideToggle();
+      });
+
+      // Скрыть все детали сообщений по клику на ссылку "Свернуть все сообщения"
+      $('.collapse_all_message').click(function() {
+        $('.details').slideUp();
+      });
+
+      // Раскрыть все сообщения с их деталями по клику на ссылку "Показать все сообщения"
+      $('.show_all_message').click(function() {
+        $('.details').slideDown();
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="message">
+    Сообщение 1
+    <div class="details">Детали сообщения 1</div>
+  </div>
+
+  <div class="message">
+    Сообщение 2
+    <div class="details">Детали сообщения 2</div>
+  </div>
+
+  <div class="message">
+    Сообщение 3
+    <div class="details">Детали сообщения 3</div>
+  </div>
+
+  <a class="collapse_all_message" href="#">Свернуть все сообщения</a>
+  <br>
+  <a class="show_all_message" href="#">Показать все сообщения</a>
+</body>
+</html>

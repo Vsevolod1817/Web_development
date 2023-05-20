@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Название</title>
+    <link rel="stylesheet" href="STYLE.css">
+    <script src="LAB.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+<div class="title-div">
+    <p class="title-p">JavaScript Задания</p>
+</div>
+<div class="top-div" onclick="setDate(); toggleSection('listDiv');">
+    <p class="top-div-content">Задание 1 - datetime</p>
+</div>
+<div class="listDiv" style="display:none">
+    <p id="data_label" class="content-p"></p>
+</div>
+<div class="top-div" onclick="setCalendar(), toggleSection('calendar');">
+    <p class="top-div-content">Задание 2 - calendar</p>
+</div>
+<div class="calendar" style="display: none">
+    <div class="wrapper">
+        <header>
+            <p class="current-date"></p>
+            <div class="icons">
+                <span id="prev" class="material-symbols-rounded">chevron_left</span>
+                <span id="next" class="material-symbols-rounded">chevron_right</span>
+            </div>
+        </header>
+        <div class="calendar">
+            <ul class="weeks">
+                <li>Вс</li>
+                <li>Пн</li>
+                <li>Вт</li>
+                <li>Ср</li>
+                <li>Чт</li>
+                <li>Пт</li>
+                <li>Сб</li>
+            </ul>
+            <ul class="days"></ul>
+        </div>
+    </div>
+</div>
+<div class="top-div" onclick="task3('task3-content'); toggleSection('task3');">
+    <p class="top-div-content">Задание 3 - DOM</p>
+</div>
+<div class="task3" style="display:none">
+    <p id="task3-content" class="content-p"></p>
+</div>
+<div class="top-div" onclick="task4('task4-block'); toggleSection('task4');">
+    <p class="top-div-content">Задание 4 - изменение объекта (поворот на 180)</p>
+</div>
+<div class="task4" style="display:none">
+    <div id="task4-block">Нажми</div>
+</div>
+<div class="top-div" onclick="toggleSection('task5');">
+    <p class="top-div-content">Задание 5 - добавление элемента</p>
+</div>
+<div class="task5" style="display:none">
+    <div class="drop-section">
+        <button id="addElement" class="add-list-element" onclick="task5('task5-list')">Добавить элемент</button>
+        <div id="task5-list"></div>
+    </div>
+</div>
+<div class="top-div" onclick="toggleSection('task6');">
+    <p class="top-div-content">Задание 6 - двойной клик (картинка перемещается)</p>
+</div>
+<div class="task6" style="display:none">
+    <div class="drop-section">
+      <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Table with Image Moving</title>
+            <style>
+                .my-table {
+                    border: 2px solid black;
+                    border-collapse: collapse;
+                    table-layout: fixed;
+                    margin: 0 auto;
+                    max-width: 800px;
+                    width: 100%;
+                    height: 500px;;
+                }
+
+                .my-td {
+                    border: 1px solid black;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    position: relative;
+                }
+
+                .my-img-container {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    max-width: 100%;
+                    max-height: 100%;
+                    pointer-events: none;
+                }
+
+                .my-img {
+                    display: block;
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+            </style>
+        </head>
+        <body>
+            <table id="tablell" class="my-table">
+                <tbody>
+                </tbody>
+            </table>
+
+            <script>
+                var newImg = document.createElement('img');
+                newImg.src = 'C:/Users/honor/OneDrive/Рабочий стол/Новая папка (3)/imgonline-com-ua-Resize-Nv8ESinajBVW.jpg';
+                newImg.id = 'myImg';
+                newImg.alt = 'Картинка';
+
+                var table = document.getElementById('tablell');
+                var rows = 5
+                var columns = 3;
+                var prevCell = null;
+
+                for (var i = 0; i < rows; i++) {
+                    var row = document.createElement('tr');
+                    for (var j = 0; j < columns; j++) {
+                        var cell = document.createElement('td');
+                        cell.classList.add('my-td');
+                        cell.addEventListener('dblclick', function (e) {
+                            var targetCell = e.target;
+                            if (targetCell.tagName === 'TD') {
+                                if (prevCell) {
+                                    prevCell.innerHTML = '';
+                                }
+                                var imgContainer = document.createElement('div');
+                                imgContainer.classList.add('my-img-container');
+                                var img = newImg.cloneNode(true);
+                                img.classList.add('my-img');
+                                imgContainer.appendChild(img);
+                                targetCell.appendChild(imgContainer);
+                                prevCell = targetCell;
+                            }
+                        });
+                        row.appendChild(cell);
+                    }
+                    table.appendChild(row);
+                }
+            </script>
+        </body>
+        </html>
+    </div>
+</div>
+<div class="top-div" onclick="task7(); toggleSection('task7');">
+    <p class="top-div-content">Задание 7 - сладости</p>
+</div>
+<div class="task7" style="display:none">
+    <div class="drop-section">
+        <ul id="menu">
+
+        </ul>
+    </div>
+</div>
+<div class="top-div" onclick="task8(); toggleSection('task8');">
+    <p class="top-div-content">Задание 8 - проявление текста</p>
+</div>
+<div class="task8" style="display:none">
+    <div class="drop-section">
+        <div id="image-container">
+            <img id="smooth-image" src="C:\Users\honor\OneDrive\Рабочий стол\Новая папка (3)\704.jpg" alt="Your image"
+                 style="position: absolute; z-index: 1; width: 100%; height: 100%;">
+            <p style="font-size: 32px; color: blueviolet">СКАЙРИМ ДЛЯ НОРДОВ!</p>
+        </div>
+    </div>
+</div>
+<div class="top-div" onclick="toggleSection('task9');">
+    <p class="top-div-content">Задание 9 - регулярные выражения</p>
+</div>
+<div class="task9" style="display:none">
+    <div class="drop-section">
+        <form id="registration-form" method="post">
+            <label for="email">Email:</label>
+            <input type="email" id="task9-email" name="email" required>
+            <br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="task9-password" name="password" required>
+            <br><br>
+            <input class="add-list-element" type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+<div class="top-div" onclick="toggleSection('task10');">
+    <p class="top-div-content">Задание 10 - обработчик формы</p>
+</div>
+<div class="task10" style="display:none">
+    <div class="drop-section">
+        <form id="task10-form" method="post">
+            <label for="email">Почта:</label>
+            <input type="text" name="email" id="email" oninput="validateEmail()">
+            <label id="emailError" style="color:red"></label>
+            <br>
+            <label for="password">Пароль:</label>
+            <input type="password" name="password" id="password" oninput="validatePasswords()">
+            <br>
+            <label for="confirm-password">Повторить пароль:</label>
+            <input type="password" name="confirm-password" id="confirm-password" oninput="validatePasswords()">
+            <label id="passwordError" style="color:red"></label>
+            <br>
+            <label for="phone">Телефон:</label>
+            <input type="text" name="phone" id="phone" oninput="validatePhone()">
+            <label id="phoneError" style="color:red"></label>
+            <br>
+            <label for="date">Дата:</label>
+            <input type="text" name="date" id="date" oninput="validateDate()">
+            <label id="dateError" style="color:red"></label>
+            <br>
+            <label for="full-name">Полное имя (Необязятельно):</label>
+            <input type="text" name="full-name" id="full-name">
+            <br>
+            <label for="faculty">Факультет (Необязятельно):</label>
+            <input type="text" name="faculty" id="faculty">
+            <br>
+            <label for="department">Кафедра (Необязятельно):</label>
+            <input type="text" name="department" id="department">
+            <br><br>
+            <p>Лучшие языки программирования (Необязятельно):</p>
+            <label class="framework"><input type="checkbox" name="frameworks" value="Swift"> Python</label>
+            <label class="framework"><input type="checkbox" name="frameworks" value="Swift"> Prolog</label>
+            <label class="framework"><input type="checkbox" name="frameworks" value="Swift"> F#</label>
+            <label class="framework"><input type="checkbox" name="frameworks" value="Swift"> C#</label>
+            <br><br><br>
+            <button id="task10-submit-button" class="add-list-element" type="submit" disabled>Submit</button>
+        </form>
+    </div>
+</div>
+<div class="top-div" onclick="toggleSection('task11');">
+    <p class="top-div-content">Задание 11 - игра</p>
+</div>
+<div class="task11" style="display:none">
+    <div class="drop-section">
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Угадай слово</title>
+        <style>
+          #output {
+            margin-bottom: 10px;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>Угадай слово</h1>
+      
+        <div id="output">
+          <p>Добро пожаловать в игру "Угадай слово"!</p>
+          <p>Компьютер загадал слово. Твоя задача - угадать его, напиши мне букву или сразу слово и я отвечу прав ты или нет.</p>
+        </div>
+      
+        <div>
+          <label for="question-input">Задай вопрос:</label>
+          <input type="text" id="question-input" />
+          <button id="ask-button">Задать</button>
+        </div>
+      
+        <script>
+          var words = ["яблоко", "банан", "апельсин", "груша", "слива"];
+          var randomIndex = Math.floor(Math.random() * words.length);
+          var secretWord = words[randomIndex];
+          var guessed = false;
+      
+          var outputElement = document.getElementById("output");
+          var questionInput = document.getElementById("question-input");
+          var askButton = document.getElementById("ask-button");
+      
+          askButton.addEventListener("click", askQuestion);
+      
+          function askQuestion() {
+            var question = questionInput.value;
+      
+            if (question.toLowerCase() === secretWord) {
+              outputElement.innerHTML += "<p>Поздравляю! Ты угадал слово '" + secretWord + "'!</p>";
+              guessed = true;
+            } else {
+              outputElement.innerHTML += "<p>Ответ на твой вопрос: " + checkAnswer(question) + "</p>";
+            }
+      
+            questionInput.value = "";
+            questionInput.focus();
+      
+            if (!guessed) {
+              questionInput.removeAttribute("disabled");
+            } else {
+              askButton.setAttribute("disabled", "disabled");
+            }
+          }
+      
+          function checkAnswer(answer) {
+            if (secretWord.includes(answer.toLowerCase())) {
+              return "Да, слово содержит букву/слово '" + answer + "'.";
+            } else {
+              return "Нет, слово не содержит букву/слово '" + answer + "'.";
+            }
+          }
+        </script>
+      </body>
+      </html>
+      
+    </div>
+</div>
