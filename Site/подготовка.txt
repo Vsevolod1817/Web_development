@@ -1,0 +1,18 @@
+<h1>HTML</h1>
+    <p>
+        <span style="font-style: normal;">HTML</span> <span>dasdasfafs</span> <a href="https://youtube.com">adfpalpds</a>
+    </p>
+    <img src="" alt="">
+
+
+
+    span{
+    font-style: italic;
+    background-color: black;
+    color: wheat;
+    text-align: right;
+}
+
+.first-img{
+    background-size: cover;
+}
