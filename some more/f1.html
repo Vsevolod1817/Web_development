@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>the_battery</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <main>
+      <section name="battery_1">
+        <div class="pimpa"></div>
+        <div class="shell item1"></div>
+      </section>
+      <section name="battery_2">
+        <div class="pimpa"></div>
+        <div class="shell item2"></div>
+      </section>
+      <section name="battery_3">
+        <div class="pimpa"></div>
+        <div class="shell item3"></div>
+      </section>
+    </main>
+  </body>
+  <style>
+  
+  *{
+    padding: 0;
+    margin: 0;
+    display: border-box;
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    height: 100vh;
+  }
+  
+  section {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+  }
+  
+  .pimpa {
+    border: 2px solid black;
+            height: 50px;
+            width: 1px;
+            margin-top: 5px;
+  }
+  
+  .shell {
+    border: 3px solid #000;
+    border-radius: 10px;
+    min-width: 100px;
+    min-height: 30px;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .item1 {
+    background-color: green;
+  }
+  .item2 {
+    background: linear-gradient(90deg, #fff 50%, yellow 50%);
+  }
+  .item3 {
+    background: linear-gradient(90deg, #fff 60%, red 40%);
+  }
+</style>
+</html>
